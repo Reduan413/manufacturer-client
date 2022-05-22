@@ -1,0 +1,9 @@
+.owl-carousel .owl-dots .owl-dot {
+  display: none;
+}
+.carousel-wrapper .rec-pagination {
+  display: none;
+}
+.carousel-wrapper .rec-arrow {
+  display: none;
+}
