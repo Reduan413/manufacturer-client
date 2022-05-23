@@ -1,4 +1,6 @@
 import { Route, Routes } from "react-router-dom";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import "./App.css";
 import About from "./Pages/About/About";
 import AllItems from "./Pages/AllItems/AllItems";
@@ -15,7 +17,6 @@ import Login from "./Pages/Login/Login";
 import RequireAuth from "./Pages/Login/RequireAuth";
 import Signup from "./Pages/Login/Signup";
 import MyProfile from "./Pages/MyProfile/MyProfile";
-import Footer from "./Pages/Shared/Footer";
 import Navbar from "./Pages/Shared/Navbar";
 
 function App() {
@@ -53,7 +54,7 @@ function App() {
           <Route path="manageproducts" element={<ManageProducts />}></Route>
         </Route>
       </Routes>
-      <Footer />
+      <ToastContainer />
     </div>
   );
 }
