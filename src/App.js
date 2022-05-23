@@ -18,7 +18,6 @@ import RequireAuth from "./Pages/Login/RequireAuth";
 import Signup from "./Pages/Login/Signup";
 import MyProfile from "./Pages/MyProfile/MyProfile";
 import Navbar from "./Pages/Shared/Navbar";
-
 function App() {
   return (
     <div>

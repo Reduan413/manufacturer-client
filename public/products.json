@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "name": "Intel Pentium Gold G6400",
+    "description": "intel 10th Generation Intel Pentium Gold G6400 Processor having the base frequency of 4.00 GHz. It has the L3 SmartCache of 4 MB containing 2 cores and 4 threads. With the bus speed of 8 GT/s DMI, it has thermal design power (TDP) rating of 58W",
+    "img": "https://www.startech.com.bd/image/cache/catalog/processor/Intel/g6400/g6400-500x500.jpg",
+    "stock": "450",
+    "minOrder": "15",
+    "price": "6600"
+  },
+  {
+    "id": 2,
+    "name": "AMD Athlon 3000G ",
+    "description": "The Athlon 3000G 3.5 GHz Dual-Core AM4 Processor from AMD has a base clock speed of 3.5 GHz, two cores with four threads in an AM4 socket, 1MB of L2 cache memory, and 4MB of L3 cache memory. Having two cores allows the processor to run multiple programs simultaneously without slowing down the system.",
+    "img": "https://www.startech.com.bd/image/cache/catalog/processor/AMD/athlon-3000g/athlon-3000g-1-500x500.jpg",
+    "stock": "500",
+    "minOrder": "10",
+    "price": "7800"
+  },
+  {
+    "id": 3,
+    "name": "AMD Ryzen 5 Pro 4650G",
+    "description": "The AMD Ryzen 5 Pro 4650G Processor with Radeon Graphics is built in intelligence featuring 6 processor cores, 12 threads, and an astonishingly efficient 45-65W TDP. In this processor, It stands with 3.7GHz Base Clock.",
+    "img": "https://www.startech.com.bd/image/cache/catalog/processor/Intel/g6400/g6400-500x500.jpg",
+    "stock": "350",
+    "minOrder": "8",
+    "price": "15000"
+  },
+  {
+    "id": 4,
+    "name": "Intel 11th Gen Core i5-11400 ",
+    "description": "Intel 11th Generation Core i5-11400 Processor having the base frequency of 2.60 GHz that can be reached as max turbo frequency at 4.40 GHz. The processor has a compatibility socket of LGA 1200 that is supported by 400 and 500 series Intel motherboards.",
+    "img": "https://www.startech.com.bd/image/cache/catalog/processor/Intel/core-i5-11400/core-i5-11400-500x500.jpg",
+    "stock": "500",
+    "minOrder": "10",
+    "price": "16500"
+  },
+  {
+    "id": 5,
+    "name": "Silicon Power 4GB DDR4 2400",
+    "description": "Capacity: 4GB, Type: DDR4, Bus speed: 2400MHz, Number of pin: 288-Pin, CAS latency: CL15, Voltage: 1.5V",
+    "img": "https://www.startech.com.bd/image/cache/catalog/Component/Ram/Sp%20RAM/2400%20bus%20ram-500x500.jpg",
+    "stock": "300",
+    "minOrder": "7",
+    "price": "2200"
+  },
+  {
+    "id": 6,
+    "name": "Apacer Panther Golden 4GB DDR4 2666MHZ",
+    "description": "The Apacer Panther Golden 4GB DDR4 2666MHZ RAM has a high level of compatibility. It is backward compatible with Intel and AMD series systems. This pattern is in the shape of a claw.",
+    "img": "https://www.startech.com.bd/image/cache/catalog/ram/apacer/panther-golden-4gb-ddr4-2666mhz/panther-golden-4gb-ddr4-2666mhz-01-500x500.jpg",
+    "stock": "400",
+    "minOrder": "8",
+    "price": "2300"
+  }
+]
