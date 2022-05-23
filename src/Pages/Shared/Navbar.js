@@ -16,16 +16,13 @@ const Navbar = () => {
         <Link to="/">Home</Link>
       </li>
       <li>
-        <Link to="">Items</Link>
+        <Link to="/alliters">ALL Items</Link>
       </li>
       <li>
-        <Link to="">Review</Link>
+        <Link to="/about">About</Link>
       </li>
       <li>
-        <Link to="">Contact</Link>
-      </li>
-      <li>
-        <Link to="">About</Link>
+        <Link to="/myprofile">My Profile</Link>
       </li>
       {user && (
         <li>
