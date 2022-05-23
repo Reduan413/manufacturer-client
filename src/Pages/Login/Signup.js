@@ -1,11 +1,12 @@
 import React from "react";
 import {
-    useCreateUserWithEmailAndPassword,
-    useUpdateProfile
+  useCreateUserWithEmailAndPassword,
+  useUpdateProfile
 } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import auth from "../../firebase.init";
+import useToken from "../../hooks/useToken";
 import Loading from "../Shared/Loading";
 import SocialLogin from "./SocialLogin";
 
@@ -19,6 +20,7 @@ const Signup = () => {
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
   const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+  const [token] = useToken(user);
 
   if (error  || updateError) {
     signUpError = (
@@ -29,6 +31,9 @@ const Signup = () => {
   }
   if (loading || updating) {
     return <Loading />;
+  }
+  if(token){
+    navigator("/")
   }
   const onSubmit = async(data) => {
     await createUserWithEmailAndPassword(data.email, data.password);

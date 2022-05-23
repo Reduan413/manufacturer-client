@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
+import useToken from "../../hooks/useToken";
 import Loading from "../Shared/Loading";
 import SocialLogin from "./SocialLogin";
 
@@ -15,11 +16,19 @@ const Login = () => {
   } = useForm();
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
+  const [token] = useToken(user);
+  const navigate = useNavigate();
+  const location = useLocation();
+  let from = location.state?.from?.pathname || "/";
+
+  useEffect(() => {
+    if(token) {
+      navigate(from, { replace: true });
+    }
+  },[token, from, navigate])
 
   if (error) {
-    signInError = (
-      <p className="text-red-500">{error?.message}</p>
-    );
+    signInError = <p className="text-red-500">{error?.message}</p>;
   }
   if (loading) {
     return <Loading />;
