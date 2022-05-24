@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import { useQuery } from "react-query";
 import Loading from "../Shared/Loading";
 import AvailableProduct from "./AvailableProduct";
+import PurchaseModal from "./PurchaseModal";
 
 const AvailableProducts = () => {
-  const [order, setOrder] = useState(null);
+  const [purchase, setPurchaser] = useState(null);
   const {
     isLoading,
     error,
@@ -26,9 +27,17 @@ const AvailableProducts = () => {
           <AvailableProduct
             key={product.id}
             product={product}
+            setPurchaser={setPurchaser}
           ></AvailableProduct>
         ))}
       </div>
+      {purchase && (
+        <PurchaseModal
+          purchase={purchase}
+          setPurchaser={setPurchaser}
+          refetch={refetch}
+        ></PurchaseModal>
+      )}
     </div>
   );
 };

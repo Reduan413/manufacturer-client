@@ -2,9 +2,8 @@ import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import Rating from 'react-rating';
-import { Link } from 'react-router-dom';
 
-const AvailableProduct = ({product}) => {
+const AvailableProduct = ({product, setPurchaser}) => {
     const { name, img, description, stock, minOrder, price } = product;
     return (
         <div className="card lg:max-w-lg bg-base-100 shadow-xl">
@@ -25,13 +24,15 @@ const AvailableProduct = ({product}) => {
           readonly
         ></Rating>
         <div className="card-actions justify-center">
-          <button
+          <label
+            htmlFor='purchase-model'
             disabled={stock.length === 0}
+            onClick={() => setPurchaser(product)}
             className="btn btn-sm btn-secondary text-white uppercase bg-gradient-to-r from-secondary to-primary"
           >
-              <Link to="/alliters">Buy NOW</Link>
+              Buy NOW
             
-          </button>
+          </label>
         </div>
       </div>
     </div>
