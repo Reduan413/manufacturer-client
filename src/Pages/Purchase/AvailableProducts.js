@@ -12,7 +12,7 @@ const AvailableProducts = () => {
     data: products,
     refetch,
   } = useQuery("available", () =>
-    fetch(`products.json`).then((res) => res.json())
+    fetch(`http://localhost:5000/product`).then((res) => res.json())
   );
   if (isLoading) {
     return <Loading></Loading>;
@@ -25,7 +25,7 @@ const AvailableProducts = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         {products.map((product) => (
           <AvailableProduct
-            key={product.id}
+            key={product._id}
             product={product}
             setPurchaser={setPurchaser}
           ></AvailableProduct>

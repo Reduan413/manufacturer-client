@@ -4,45 +4,66 @@ import { toast } from "react-toastify";
 import auth from "../../firebase.init";
 
 const PurchaseModal = ({ purchase, setPurchaser, refetch }) => {
-  const { id, name, img, description, stock, minOrder, price } = purchase;
+  const { _id, name, img, description, stock, minOrder, price } = purchase;
   const [user, loading, error] = useAuthState(auth);
 
   const handlePurchase = (event) => {
     event.preventDefault();
     const quantity = event.target.quantity.value;
     const total_bill = quantity * price;
-    console.log(quantity, stock);
-    if ( quantity <= minOrder || quantity <= stock ) {
-        console.log(quantity)
-      const order = {
-        productId: id,
-        product: name,
-        customerName: user.displayName,
-        customerEmail: user.email,
-        quantity,
-        price,
-        total_amount: total_bill,
-        payment: "No pay",
-      };
-      console.log(order)
-      fetch("http://localhost:5000/order",{
-        method: 'POST',
-        headers: {
-          'content-type': 'application/json',
-          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-        body: JSON.stringify(order)
-      })
-      .then(res => res.json())
-      .then(inserted => {
-          console.log(inserted)
-        if(inserted.insertedId){
-            toast.success('Doctor added successfully');
-          }
-          else{
-            toast.error('Failed to add the doctor');
-          }
-      })
+    const minOrderNum = parseInt(minOrder);
+    const newStock = stock - quantity;
+
+    if (quantity < stock) {
+      if (quantity >= minOrderNum) {
+        const order = {
+          productId: _id,
+          product: name,
+          customerName: user.displayName,
+          customerEmail: user.email,
+          quantity,
+          price,
+          total_amount: total_bill,
+          payment: "No pay",
+        };
+        console.log(order);
+        fetch("http://localhost:5000/order", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+          body: JSON.stringify(order),
+        })
+          .then((res) => res.json())
+          .then((inserted) => {
+            console.log(inserted);
+            if (inserted.insertedId) {
+              toast.success("Order added successfully");
+              setPurchaser(null);
+              const product = {
+                stock: newStock,
+              };
+              fetch(`http://localhost:5000/product/${_id}`, {
+                method: "PATCH",
+                headers: {
+                  "content-type": "application/json",
+                  authorization: `Bearer ${localStorage.getItem(
+                    "accessToken"
+                  )}`,
+                },
+                body: JSON.stringify(product),
+              })
+                .then((res) => res.json())
+                .then((data) => {
+                  refetch();
+                  console.log(data);
+                });
+            } else {
+              toast.error("Failed to add the Order");
+            }
+          });
+      }
     }
   };
   return (
