@@ -3,7 +3,6 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import "./App.css";
 import About from "./Pages/About/About";
-import AllItems from "./Pages/AllItems/AllItems";
 import AddProduct from "./Pages/Dashboard/AddProduct";
 import AddReview from "./Pages/Dashboard/AddReview";
 import Dashboard from "./Pages/Dashboard/Dashboard";
@@ -17,6 +16,7 @@ import Login from "./Pages/Login/Login";
 import RequireAuth from "./Pages/Login/RequireAuth";
 import Signup from "./Pages/Login/Signup";
 import MyProfile from "./Pages/MyProfile/MyProfile";
+import Purchase from "./Pages/Purchase/Purchase";
 import Navbar from "./Pages/Shared/Navbar";
 function App() {
   return (
@@ -27,10 +27,10 @@ function App() {
         <Route path="/login" element={<Login />}></Route>
         <Route path="/signup" element={<Signup />}></Route>
         <Route
-          path="/alliters"
+          path="/purchase"
           element={
             <RequireAuth>
-              <AllItems />
+              <Purchase />
             </RequireAuth>
           }
         ></Route>
