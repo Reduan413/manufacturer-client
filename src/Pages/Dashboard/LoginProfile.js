@@ -1,25 +1,11 @@
 import React, { useState } from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { useQuery } from "react-query";
-import auth from "../../firebase.init";
-import Loading from "../Shared/Loading";
+import useActiveUser from "../../hooks/useActiveUser";
 import ProfileUpdateModal from "./ProfileUpdateModal";
 
 const LoginProfile = () => {
-  const [user] = useAuthState(auth);
-  const email = user.email;
   const [updateProfile, setUpdateProfile] = useState(false);
-  const { data: activeUser, isLoading, refetch } = useQuery("user", () =>
-    fetch(`http://localhost:5000/user/${email}`, {
-      method: "GET",
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    }).then((res) => res.json())
-  );
-  if (isLoading) {
-    <Loading></Loading>;
-  }
+  const [activeUser, refetch, email] = useActiveUser()
+
   return (
     <div>
       <div className="flex justify-end mx-12">

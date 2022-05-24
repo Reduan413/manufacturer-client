@@ -105,30 +105,8 @@ const ProfileUpdateModal = ({ activeUser, refetch, setUpdateProfile }) => {
                 placeholder="Your Email"
                 disabled
                 value={email}
-                className="input input-bordered w-full max-w-xs"
-                // {...register("email", {
-                //   required: {
-                //     value: true,
-                //     message: "Email is Required",
-                //   },
-                //   pattern: {
-                //     value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
-                //     message: "Provide a valid Email",
-                //   },
-                // })}
+                className="input input-bordered w-full max-w-xs"      
               />
-              {/* <label className="label">
-                {errors.email?.type === "required" && (
-                  <span className="label-text-alt text-red-500">
-                    {errors.email.message}
-                  </span>
-                )}
-                {errors.email?.type === "pattern" && (
-                  <span className="label-text-alt text-red-500">
-                    {errors.email.message}
-                  </span>
-                )}
-              </label> */}
             </div>
             <div className="form-control w-full max-w-xs">
               <label className="label">
