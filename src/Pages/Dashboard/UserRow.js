@@ -11,6 +11,7 @@ const UserRow = ({user, index, refetch}) => {
       },
     })
       .then((res) => {
+        console.log(res)
           if(res.status === 403){
               toast.error('Failed to Make an admin')
           }
@@ -30,7 +31,7 @@ const UserRow = ({user, index, refetch}) => {
       <td>{email}</td>
       <td>
         {role !== "admin" && (
-          <button  className="btn btn-outline btn-info btn-xs">
+          <button onClick={makeAdmin}  className="btn btn-outline btn-info btn-xs">
             Make Admin
           </button>
         )}

@@ -1,7 +1,10 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 
-const ProfileUpdateModal = () => {
+const ProfileUpdateModal = ({ activeUser, refetch, setUpdateProfile }) => {
+  const { _id, email } = activeUser;
+
   const {
     register,
     formState: { errors },
@@ -9,12 +12,54 @@ const ProfileUpdateModal = () => {
     reset,
   } = useForm();
 
+  const imgStorageKey = "5812e35273814437e5f10dedd616b9a8";
+
   const onSubmit = async (data) => {
-    console.log(data);
+    const image = data.image[0];
+    const formData = new FormData();
+    formData.append("image", image);
+    const url = `https://api.imgbb.com/1/upload?key=${imgStorageKey}`;
+    fetch(url, {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        if (result.success) {
+          const img = result.data.url;
+          const user = {
+            name: data.name,
+            email: email,
+            address: data.address,
+            company: data.company,
+            phone: data.phone,
+            image: img,
+          };
+          fetch(`http://localhost:5000/user/${_id}`, {
+            method: "PATCH",
+            headers: {
+              "content-type": "application/json",
+              authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+            },
+            body: JSON.stringify(user),
+          })
+            .then((res) => res.json())
+            .then((inserted) => {
+              toast.success("Profile Updated successfully");
+              reset();
+              setUpdateProfile(false)
+              refetch();
+            });
+        }
+      });
   };
   return (
     <div>
-      <input type="checkbox" id="updateProfile-modal" className="modal-toggle" />
+      <input
+        type="checkbox"
+        id="updateProfile-modal"
+        className="modal-toggle"
+      />
       <div className="modal modal-bottom sm:modal-middle">
         <div className="modal-box">
           <label
@@ -24,7 +69,10 @@ const ProfileUpdateModal = () => {
             ✕
           </label>
           <h2 className="text-3xl">Add Your Details</h2>
-          <form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-1 gap-1 justify-items-center mt-2">
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="grid grid-cols-1 gap-1 justify-items-center mt-2"
+          >
             <div className="form-control w-full max-w-xs">
               <label className="label">
                 <span className="label-text">Name</span>
@@ -55,19 +103,21 @@ const ProfileUpdateModal = () => {
               <input
                 type="email"
                 placeholder="Your Email"
+                disabled
+                value={email}
                 className="input input-bordered w-full max-w-xs"
-                {...register("email", {
-                  required: {
-                    value: true,
-                    message: "Email is Required",
-                  },
-                  pattern: {
-                    value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
-                    message: "Provide a valid Email",
-                  },
-                })}
+                // {...register("email", {
+                //   required: {
+                //     value: true,
+                //     message: "Email is Required",
+                //   },
+                //   pattern: {
+                //     value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
+                //     message: "Provide a valid Email",
+                //   },
+                // })}
               />
-              <label className="label">
+              {/* <label className="label">
                 {errors.email?.type === "required" && (
                   <span className="label-text-alt text-red-500">
                     {errors.email.message}
@@ -78,7 +128,7 @@ const ProfileUpdateModal = () => {
                     {errors.email.message}
                   </span>
                 )}
-              </label>
+              </label> */}
             </div>
             <div className="form-control w-full max-w-xs">
               <label className="label">
@@ -128,23 +178,23 @@ const ProfileUpdateModal = () => {
             </div>
             <div className="form-control w-full max-w-xs">
               <label className="label">
-                <span className="label-text">Name</span>
+                <span className="label-text">Company Name</span>
               </label>
               <input
                 type="text"
-                placeholder="Your Name"
+                placeholder="Your Company Name"
                 className="input input-bordered w-full max-w-xs"
-                {...register("name", {
+                {...register("company", {
                   required: {
                     value: true,
-                    message: "Name is Required",
+                    message: "Company Name is Required",
                   },
                 })}
               />
               <label className="label">
-                {errors.name?.type === "required" && (
+                {errors.company?.type === "required" && (
                   <span className="label-text-alt text-red-500">
-                    {errors.name.message}
+                    {errors.company.message}
                   </span>
                 )}
               </label>
