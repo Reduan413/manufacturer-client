@@ -1,3 +1,4 @@
+import { signOut } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
@@ -11,7 +12,6 @@ const MyOrders = () => {
 
   useEffect(() => {
     if (user) {
-      console.log(`http://localhost:5000/order?customer=${user.email}`);
       fetch(`http://localhost:5000/order?customer=${user.email}`, {
         method: "GET",
         headers: {
@@ -21,9 +21,9 @@ const MyOrders = () => {
         .then((res) => {
           console.log("res", res);
           if (res.status === 401 || res.status === 403) {
-            //signOut(auth);
-            //localStorage.removeItem("accessToken");
-            //navigate("/");
+            signOut(auth);
+            localStorage.removeItem("accessToken");
+            navigate("/");
           }
           return res.json();
         })
@@ -43,6 +43,7 @@ const MyOrders = () => {
               <th>Price</th>
               <th>Quantity</th>
               <th>Total Amount</th>
+              <th>Status</th>
               <th>Payment</th>
             </tr>
           </thead>

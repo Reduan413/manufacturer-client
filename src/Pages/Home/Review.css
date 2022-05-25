@@ -1,0 +1,48 @@
+.slide {
+  text-align: center;
+}
+
+.slide p {
+  font-size: 1rem;
+  line-height: 2;
+  min-height: 300px;
+  color: #777;
+  position: relative;
+  background: #cbeaeb;
+  border: 0.1rem solid #008080;
+  margin-bottom: 3rem;
+  padding: 2rem;
+  text-align: justify;
+}
+
+.slide p::before {
+  content: "";
+  position: absolute;
+  bottom: -1.2rem;
+  left: 50%;
+  -webkit-transform: translate(-50%) rotate(45deg);
+  transform: translate(-50%) rotate(45deg);
+  background: #cbeaeb;
+  border-bottom: 0.1rem solid #008080;
+  border-right: 0.1rem solid #008080;
+  height: 2rem;
+  width: 2rem;
+}
+.slide img {
+  margin: auto;
+  height: 7rem;
+  width: 7rem;
+  border-radius: 50%;
+}
+
+.slide h3 {
+  font-size: 1.5rem;
+  text-transform: capitalize;
+  color: #444;
+  padding: 0.5rem 0;
+}
+
+.slide .stars {
+  font-size: 1.2rem;
+  color: #008080;
+}

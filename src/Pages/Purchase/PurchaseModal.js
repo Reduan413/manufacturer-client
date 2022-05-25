@@ -2,10 +2,12 @@ import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { toast } from "react-toastify";
 import auth from "../../firebase.init";
+import useActiveUser from "../../hooks/useActiveUser";
 
 const PurchaseModal = ({ purchase, setPurchaser, refetch }) => {
   const { _id, name, img, description, stock, minOrder, price } = purchase;
   const [user, loading, error] = useAuthState(auth);
+  const [activeUser] = useActiveUser()
 
   const handlePurchase = (event) => {
     event.preventDefault();
@@ -19,12 +21,13 @@ const PurchaseModal = ({ purchase, setPurchaser, refetch }) => {
         const order = {
           productId: _id,
           product: name,
-          customerName: user.displayName,
-          customerEmail: user.email,
+          customerName: activeUser.userName,
+          customerEmail: activeUser.email,
           quantity,
           price,
           total_amount: total_bill,
-          payment: "No pay",
+          status: "Not Paid",
+          payment: "No Paid",
         };
         console.log(order);
         fetch("http://localhost:5000/order", {
@@ -91,14 +94,14 @@ const PurchaseModal = ({ purchase, setPurchaser, refetch }) => {
               type="text"
               name="name"
               disabled
-              value={user?.displayName}
+              value={activeUser?.userName}
               className="input input-bordered w-full max-w-xs"
             />
             <input
               type="email"
               name="email"
               disabled
-              value={user?.email}
+              value={activeUser?.email}
               className="input input-bordered w-full max-w-xs"
             />
             <input

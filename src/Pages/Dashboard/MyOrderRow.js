@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const MyOrderRow = ({ index, myOrder }) => {
-  const { _id, product, quantity, price, total_amount, payment } = myOrder;
+  const { _id, product, quantity, price, total_amount,status,  payment } = myOrder;
   return (
     <tr>
       <th>{index + 1}</th>
@@ -10,6 +10,7 @@ const MyOrderRow = ({ index, myOrder }) => {
       <td>{price}</td>
       <td>{quantity}</td>
       <td>{total_amount}</td>
+      <td>{status}</td>
       <td>
         {payment !== "paid" && (
           <Link to={`/dashboard/payment/${_id}`}>

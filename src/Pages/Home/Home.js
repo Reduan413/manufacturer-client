@@ -3,6 +3,7 @@ import Footer from "../../Pages/Shared/Footer";
 import Banner from "./Banner";
 import Brand from "./Brand";
 import Products from "./Products";
+import Reviews from "./Reviews";
 import Summary from "./Summary";
 
 const Home = () => {
@@ -11,6 +12,7 @@ const Home = () => {
       <Banner />
       <Products />
       <Summary/>
+      <Reviews/>
       <Brand />
 
       <Footer />

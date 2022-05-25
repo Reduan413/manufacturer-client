@@ -4,8 +4,8 @@ const Summary = () => {
   return (
     <div className="mx-12">
         <h1 className="text-5xl font-bold text-secondary text-center my-8">MILLIONS BUSINESS TRUST US</h1>
-      <div class="stats shadow w-full ">
-        <div class="stat">
+      <div class=" shadow w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 ">
+        <div class="stat ">
           <div class="stat-figure text-primary">
             <svg
               xmlns="http://www.w3.org/2000/svg"

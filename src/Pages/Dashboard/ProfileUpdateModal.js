@@ -202,7 +202,7 @@ const ProfileUpdateModal = ({ activeUser, refetch, setUpdateProfile }) => {
             <input
               className="btn w-full max-w-xs text-white"
               type="submit"
-              value="ADD DOCTOR"
+              value="UPDATE PROFILE"
             />
           </form>
         </div>
