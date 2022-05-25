@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { useQuery } from "react-query";
 import Loading from "../Shared/Loading";
+import ProductDeleteModal from "./ProductDeleteModal";
 import ProductRow from "./ProductRow";
 
 const ManageProducts = () => {
+  const [deletingProduct, setDeletingProduct] = useState(null);
   const {
     isLoading,
     error,
@@ -16,40 +18,49 @@ const ManageProducts = () => {
     return <Loading></Loading>;
   }
   return (
-    <div class="overflow-x-auto w-full">
-      <table class="table w-full">
-        <thead>
-          <tr>
-            <th></th>
-            <th>Name</th>
+    <div>
+      <div class="overflow-x-auto w-full">
+        <table class="table w-full">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Name</th>
 
-            <th>Price</th>
-            <th>Stock</th>
-            <th>Min order</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {products.map((product, index) => (
-            <ProductRow
-              index={index}
-              key={product._id}
-              product={product}
-              //setPurchaser={setPurchaser}
-            ></ProductRow>
-          ))}
-        </tbody>
+              <th>Price</th>
+              <th>Stock</th>
+              <th>Min order</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {products.map((product, index) => (
+              <ProductRow
+                index={index}
+                key={product._id}
+                product={product}
+                setDeletingProduct={setDeletingProduct}
+              ></ProductRow>
+            ))}
+          </tbody>
 
-        <tfoot>
-          <tr>
-            <th></th>
-            <th>Name</th>
-            <th>Job</th>
-            <th>Favorite Color</th>
-            <th></th>
-          </tr>
-        </tfoot>
-      </table>
+          <tfoot>
+            <tr>
+              <th></th>
+              <th>Name</th>
+              <th>Job</th>
+              <th>Favorite Color</th>
+              <th></th>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+      {deletingProduct && (
+        <ProductDeleteModal
+          deletingProduct={deletingProduct}
+          refetch={refetch}
+          setDeletingProduct={setDeletingProduct}
+        ></ProductDeleteModal>
+      )}
     </div>
   );
 };

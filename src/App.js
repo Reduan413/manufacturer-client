@@ -6,6 +6,7 @@ import About from "./Pages/About/About";
 import AddProduct from "./Pages/Dashboard/AddProduct";
 import AddReview from "./Pages/Dashboard/AddReview";
 import Dashboard from "./Pages/Dashboard/Dashboard";
+import EditProduct from "./Pages/Dashboard/EditProduct";
 import LoginProfile from "./Pages/Dashboard/LoginProfile";
 import ManageOrders from "./Pages/Dashboard/ManageOrders";
 import ManageProducts from "./Pages/Dashboard/ManageProducts";
@@ -51,6 +52,7 @@ function App() {
           <Route path="addproduct" element={<AddProduct />}></Route>
           <Route path="manageUsers" element={<ManageUsers />}></Route>
           <Route path="manageproducts" element={<ManageProducts />}></Route>
+          <Route path="manageproducts/editproduct/:id" element={<EditProduct />}></Route>
         </Route>
       </Routes>
       <ToastContainer />

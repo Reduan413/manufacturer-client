@@ -60,7 +60,6 @@ const PurchaseModal = ({ purchase, setPurchaser, refetch }) => {
                 .then((res) => res.json())
                 .then((data) => {
                   refetch();
-                  console.log(data);
                 });
             } else {
               toast.error("Failed to add the Order");
