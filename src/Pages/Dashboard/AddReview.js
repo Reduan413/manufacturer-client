@@ -1,5 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 import useActiveUser from '../../hooks/useActiveUser';
 
 const AddReview = () => {
@@ -10,11 +11,38 @@ const AddReview = () => {
         handleSubmit,
         reset,
       } = useForm();
+      const onSubmit = async (data) => {
+        const review = {
+          name: activeUser.userName,
+          email: activeUser.email,
+          image: activeUser.image,
+          reviewBody: data.review,
+          rating: data.rating,
+        }
+        fetch('http://localhost:5000/review',{
+          method: 'POST',
+          headers: {
+            'content-type': 'application/json',
+            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+          body: JSON.stringify(review)
+        })
+        .then(res => res.json())
+        .then(inserted => {
+          if(inserted.insertedId){
+            toast.success('Review added successfully');
+            reset();
+          }
+          else{
+            toast.error('Review to add the doctor');
+          }
+        })
+      }
     return (
         <div>
             <h2 className="text-3xl">Add Your Details</h2>
           <form
-            //onSubmit={handleSubmit(onSubmit)}
+            onSubmit={handleSubmit(onSubmit)}
             className="grid grid-cols-1 gap-1 justify-items-center mt-2"
           >
             <div className="form-control w-full max-w-xs">
