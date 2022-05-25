@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 import About from "./Pages/About/About";
 import AddProduct from "./Pages/Dashboard/AddProduct";
@@ -14,7 +14,9 @@ import ManageUsers from "./Pages/Dashboard/ManageUsers";
 import MyOrders from "./Pages/Dashboard/MyOrders";
 import Home from "./Pages/Home/Home";
 import Login from "./Pages/Login/Login";
+import RequireAdmin from "./Pages/Login/RequireAdmin";
 import RequireAuth from "./Pages/Login/RequireAuth";
+import RequireCustomer from "./Pages/Login/RequireCustomer";
 import Signup from "./Pages/Login/Signup";
 import MyProfile from "./Pages/MyProfile/MyProfile";
 import Purchase from "./Pages/Purchase/Purchase";
@@ -45,14 +47,60 @@ function App() {
             </RequireAuth>
           }
         >
-          <Route index element={<MyOrders />}></Route>
-          <Route path="addreview" element={<AddReview />}></Route>
-          <Route path="loginprofile" element={<LoginProfile />}></Route>
-          <Route path="manageorder" element={<ManageOrders />}></Route>
-          <Route path="addproduct" element={<AddProduct />}></Route>
-          <Route path="manageUsers" element={<ManageUsers />}></Route>
-          <Route path="manageproducts" element={<ManageProducts />}></Route>
-          <Route path="manageproducts/editproduct/:id" element={<EditProduct />}></Route>
+          <Route index element={<LoginProfile />}></Route>
+          <Route
+            path="myorders"
+            element={
+              <RequireCustomer>
+                <MyOrders />
+              </RequireCustomer>
+            }
+          ></Route>
+          <Route
+            path="addreview"
+            element={
+              <RequireCustomer>
+                <AddReview />
+              </RequireCustomer>
+            }
+          ></Route>
+
+          <Route
+            path="manageorder"
+            element={
+              <RequireAdmin>
+                <ManageOrders />
+              </RequireAdmin>
+            }
+          ></Route>
+          <Route
+            path="addproduct"
+            element={
+              <RequireAdmin>
+                <AddProduct />
+              </RequireAdmin>
+            }
+          ></Route>
+          <Route
+            path="manageUsers"
+            element={
+              <RequireAdmin>
+                <ManageUsers />
+              </RequireAdmin>
+            }
+          ></Route>
+          <Route
+            path="manageproducts"
+            element={
+              <RequireAdmin>
+                <ManageProducts />
+              </RequireAdmin>
+            }
+          ></Route>
+          <Route
+            path="manageproducts/editproduct/:id"
+            element={<EditProduct />}
+          ></Route>
         </Route>
       </Routes>
       <ToastContainer />

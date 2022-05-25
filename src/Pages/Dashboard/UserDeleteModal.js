@@ -1,14 +1,10 @@
 import React from "react";
 import { toast } from "react-toastify";
 
-const ProductDeleteModal = ({
-  deletingProduct,
-  refetch,
-  setDeletingProduct,
-}) => {
-  const { _id, name } = deletingProduct;
+const UserDeleteModal = (deletingUser, refetch, setDeletingUser) => {
+  const { _id, name } = deletingUser.deletingUser;
   const handleDelete = (email) => {
-    fetch(`http://localhost:5000/product/${_id}`, {
+    fetch(`http://localhost:5000/user/${_id}`, {
       method: "DELETE",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -17,9 +13,10 @@ const ProductDeleteModal = ({
       .then((res) => res.json())
       .then((data) => {
         if (data.deletedCount) {
-          toast.success(`Product: ${name} is deleted.`);
-          setDeletingProduct(null);
+          toast.success(`User: ${name} is deleted.`);
+          setDeletingUser(null);
           refetch();
+          setDeletingUser(null)
         }
       });
   };
@@ -27,7 +24,7 @@ const ProductDeleteModal = ({
     <div>
       <input
         type="checkbox"
-        id="product-delete-confirm-modal"
+        id="user-delete-confirm-modal"
         className="modal-toggle"
       />
       <div className="modal modal-bottom sm:modal-middle">
@@ -41,10 +38,10 @@ const ProductDeleteModal = ({
               onClick={() => handleDelete(_id)}
               className="btn btn-outline btn-error btn-sm "
             >
-              Remove Product
+              Remove User
             </button>
             <label
-              for="product-delete-confirm-modal"
+              for="user-delete-confirm-modal"
               className="btn btn-outline btn-sm"
             >
               Cancel
@@ -56,4 +53,4 @@ const ProductDeleteModal = ({
   );
 };
 
-export default ProductDeleteModal;
+export default UserDeleteModal;

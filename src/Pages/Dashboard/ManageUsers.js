@@ -1,27 +1,29 @@
-import React from 'react';
-import { useQuery } from 'react-query';
-import Loading from '../Shared/Loading';
-import UserRow from './UserRow';
+import React, { useState } from "react";
+import { useQuery } from "react-query";
+import Loading from "../Shared/Loading";
+import UserDeleteModal from "./UserDeleteModal";
+import UserRow from "./UserRow";
 
 const ManageUsers = () => {
-    const {
-        data: users,
-        isLoading,
-        refetch,
-      } = useQuery("users", () =>
-        fetch("http://localhost:5000/user", {
-          method: "GET",
-          headers: {
-            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-          },
-        }).then((res) => res.json())
-      );
-    
-      if (isLoading) {
-        return <Loading></Loading>;
-      }
-    return (
-        <div>
+  const [deletingUser, setDeletingUser] = useState(null);
+  const {
+    data: users,
+    isLoading,
+    refetch,
+  } = useQuery("users", () =>
+    fetch("http://localhost:5000/user", {
+      method: "GET",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    }).then((res) => res.json())
+  );
+
+  if (isLoading) {
+    return <Loading></Loading>;
+  }
+  return (
+    <div>
       <h1 className="text-2xl">All Users {users.length}</h1>
       <div>
         <div className="overflow-x-auto">
@@ -42,14 +44,22 @@ const ManageUsers = () => {
                   user={user}
                   index={index}
                   refetch={refetch}
+                  setDeletingUser={setDeletingUser}
                 />
               ))}
             </tbody>
           </table>
         </div>
       </div>
+      {deletingUser && (
+        <UserDeleteModal
+          deletingUser={deletingUser}
+          refetch={refetch}
+          setDeletingUser={setDeletingUser}
+        ></UserDeleteModal>
+      )}
     </div>
-    );
+  );
 };
 
 export default ManageUsers;
