@@ -41,7 +41,7 @@ const Reviews = () => {
         className="mySwiper"
       >
         {reviews.slice(0, 8).map((review) => (
-          <SwiperSlide>
+          <SwiperSlide key={review._id}>
             <div class="swiper-slide slide">
               <p>{review.reviewBody}</p>
               <img src={review.image} alt="" />

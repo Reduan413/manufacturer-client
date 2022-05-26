@@ -1,7 +1,9 @@
 import React from "react";
+import useActiveUser from "../../hooks/useActiveUser";
 
 const AvailableProduct = ({ product, setPurchaser }) => {
   const { name, img, description, stock, minOrder, price } = product;
+  const [activeUser] = useActiveUser()
   return (
     <div className="card lg:max-w-lg bg-base-100 shadow-xl">
       <div className="card-body text-center">
@@ -14,14 +16,14 @@ const AvailableProduct = ({ product, setPurchaser }) => {
         </p>
 
         <div className="card-actions justify-center">
-          <label
+          {activeUser?.role !=="admin" &&<label
             htmlFor="purchase-model"
             disabled={stock.length === 0}
             onClick={() => setPurchaser(product)}
             className="btn btn-sm btn-secondary text-white uppercase bg-gradient-to-r from-secondary to-primary"
           >
             Buy NOW
-          </label>
+          </label>}
         </div>
       </div>
     </div>

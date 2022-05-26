@@ -12,6 +12,7 @@ import ManageOrders from "./Pages/Dashboard/ManageOrders";
 import ManageProducts from "./Pages/Dashboard/ManageProducts";
 import ManageUsers from "./Pages/Dashboard/ManageUsers";
 import MyOrders from "./Pages/Dashboard/MyOrders";
+import Payment from "./Pages/Dashboard/Payment";
 import Home from "./Pages/Home/Home";
 import Login from "./Pages/Login/Login";
 import RequireAdmin from "./Pages/Login/RequireAdmin";
@@ -61,6 +62,14 @@ function App() {
             element={
               <RequireCustomer>
                 <AddReview />
+              </RequireCustomer>
+            }
+          ></Route>
+          <Route
+            path="payment/:id"
+            element={
+              <RequireCustomer>
+                <Payment />
               </RequireCustomer>
             }
           ></Route>
