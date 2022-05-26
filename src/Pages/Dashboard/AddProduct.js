@@ -35,7 +35,7 @@ const AddProduct = () => {
             img: img,
           };
           console.log(product)
-          fetch(`http://localhost:5000/product`, {
+          fetch(`https://rocky-dusk-15979.herokuapp.com/product`, {
             method: "POST",
             headers: {
               "content-type": "application/json",
@@ -91,7 +91,7 @@ const AddProduct = () => {
             <span className="label-text">Your Description</span>
           </label>
           <textarea
-            class="textarea textarea-bordered"
+             className="textarea textarea-bordered"
             placeholder="write description "
             {...register("description", {
               required: {
@@ -202,7 +202,7 @@ const AddProduct = () => {
           </label>
         </div>
         <input
-          className="btn w-full max-w-xs text-white"
+          className="btn w-full max-w-xs text-white bg-gradient-to-r from-secondary to-primary"
           type="submit"
           value="ADD PRODUCT"
         />

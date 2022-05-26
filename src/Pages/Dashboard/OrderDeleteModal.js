@@ -1,10 +1,10 @@
 import React from "react";
 import { toast } from "react-toastify";
 
-const UserDeleteModal = (deletingUser, refetch, setDeletingUser) => {
-  const { _id, name } = deletingUser.deletingUser;
+const OrderDeleteModal = ({ deletingOrder, refetch, setDeletingOrder }) => {
+  const { _id, product } = deletingOrder;
   const handleDelete = (email) => {
-    fetch(`https://rocky-dusk-15979.herokuapp.com/user/${_id}`, {
+    fetch(`https://rocky-dusk-15979.herokuapp.com/order/${_id}`, {
       method: "DELETE",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -13,10 +13,9 @@ const UserDeleteModal = (deletingUser, refetch, setDeletingUser) => {
       .then((res) => res.json())
       .then((data) => {
         if (data.deletedCount) {
-          toast.success(`User: ${name} is deleted.`);
-          setDeletingUser(null);
+          toast.success(`Order: ${product} is deleted.`);
+          setDeletingOrder(null);
           refetch();
-          setDeletingUser(null)
         }
       });
   };
@@ -24,13 +23,13 @@ const UserDeleteModal = (deletingUser, refetch, setDeletingUser) => {
     <div>
       <input
         type="checkbox"
-        id="user-delete-confirm-modal"
+        id="order-delete-confirm-modal"
         className="modal-toggle"
       />
       <div className="modal modal-bottom sm:modal-middle">
         <div className="modal-box">
           <h3 className="font-bold text-lg text-red-500">
-            Are you sure you want to delete {name}!
+            Are you sure you want to delete {product} Order!
           </h3>
 
           <div className="modal-action">
@@ -38,10 +37,10 @@ const UserDeleteModal = (deletingUser, refetch, setDeletingUser) => {
               onClick={() => handleDelete(_id)}
               className="btn btn-outline btn-error btn-sm "
             >
-              Remove User
+              Remove Order
             </button>
             <label
-                htmlFor="user-delete-confirm-modal"
+                htmlFor="order-delete-confirm-modal"
               className="btn btn-outline btn-sm"
             >
               Cancel
@@ -53,4 +52,4 @@ const UserDeleteModal = (deletingUser, refetch, setDeletingUser) => {
   );
 };
 
-export default UserDeleteModal;
+export default OrderDeleteModal;

@@ -9,7 +9,7 @@ const RequireAuth = ({children}) => {
     const [user, loading, error] = useAuthState(auth);
     const location = useLocation();
     const token = localStorage.getItem('accessToken')
-    console.log(token)
+    
 
     if(loading){
         return <Loading/>

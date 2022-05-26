@@ -12,15 +12,16 @@ const ManageProducts = () => {
     data: products,
     refetch,
   } = useQuery("available", () =>
-    fetch(`http://localhost:5000/product`).then((res) => res.json())
+    fetch(`https://rocky-dusk-15979.herokuapp.com/product`).then((res) => res.json())
   );
   if (isLoading) {
     return <Loading></Loading>;
   }
   return (
     <div>
-      <div class="overflow-x-auto w-full">
-        <table class="table w-full">
+      <h1 className="text-2xl m-2">All Product</h1>
+      <div  className="overflow-x-auto w-full">
+        <table  className="table w-full">
           <thead>
             <tr>
               <th></th>
@@ -43,15 +44,7 @@ const ManageProducts = () => {
             ))}
           </tbody>
 
-          <tfoot>
-            <tr>
-              <th></th>
-              <th>Name</th>
-              <th>Job</th>
-              <th>Favorite Color</th>
-              <th></th>
-            </tr>
-          </tfoot>
+          
         </table>
       </div>
       {deletingProduct && (

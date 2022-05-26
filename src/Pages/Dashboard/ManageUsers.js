@@ -11,7 +11,7 @@ const ManageUsers = () => {
     isLoading,
     refetch,
   } = useQuery("users", () =>
-    fetch("http://localhost:5000/user", {
+    fetch("https://rocky-dusk-15979.herokuapp.com/user", {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -24,7 +24,7 @@ const ManageUsers = () => {
   }
   return (
     <div>
-      <h1 className="text-2xl">All Users {users.length}</h1>
+      <h1 className="text-2xl m-2">All User</h1>
       <div>
         <div className="overflow-x-auto">
           <table className="table w-full">

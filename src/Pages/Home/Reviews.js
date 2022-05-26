@@ -11,7 +11,7 @@ import "./Review.css";
 
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
-  axios.get("http://localhost:5000/review").then((res) => {
+  axios.get("https://rocky-dusk-15979.herokuapp.com/review").then((res) => {
     setReviews(res.data);
   });
   return (
@@ -42,7 +42,7 @@ const Reviews = () => {
       >
         {reviews.slice(0, 8).map((review) => (
           <SwiperSlide key={review._id}>
-            <div class="swiper-slide slide">
+            <div  className="swiper-slide slide">
               <p>{review.reviewBody}</p>
               <img src={review.image} alt="" />
               <h3>{review.name}</h3>

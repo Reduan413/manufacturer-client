@@ -10,7 +10,7 @@ const Products = () => {
   useEffect(() => {
     const feachdata = async () => {
       setIsLoading(true);
-      await axios.get("http://localhost:5000/product").then((res) => {
+      await axios.get("https://rocky-dusk-15979.herokuapp.com/product").then((res) => {
         setProducts(res.data);
         setIsLoading(false);
       });
@@ -26,7 +26,7 @@ const Products = () => {
       <h2 className="text-5xl font-bold text-secondary text-center my-8">
         Products
       </h2>
-      <div class="divider"></div>
+      <div  className="divider"></div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         {products.slice(0,6).map((product) => (
           <Product key={product._id} product={product}></Product>

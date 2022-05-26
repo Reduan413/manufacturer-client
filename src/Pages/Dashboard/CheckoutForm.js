@@ -13,7 +13,7 @@ const CheckoutForm = ({ order }) => {
   const {_id, price, customerName, customerEmail } = order;
 
   useEffect(() => {
-    fetch("http://localhost:5000/create-payment-intent", {
+    fetch("https://rocky-dusk-15979.herokuapp.com/create-payment-intent", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -70,7 +70,7 @@ const CheckoutForm = ({ order }) => {
         status:"Pending",
         transactionId: paymentIntent.id,
       };
-      fetch(`http://localhost:5000/order/${_id}`, {
+      fetch(`https://rocky-dusk-15979.herokuapp.com/order/${_id}`, {
         method: "PATCH",
         headers: {
           "content-type": "application/json",

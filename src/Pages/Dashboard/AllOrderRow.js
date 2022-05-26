@@ -1,7 +1,7 @@
-import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
+import { faCircleCheck, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const AllOrderRow = ({ index, allOrder, refetch }) => {
+const AllOrderRow = ({ index, allOrder, refetch, setDeletingOrder }) => {
   const {
     _id,
     product,
@@ -17,7 +17,7 @@ const AllOrderRow = ({ index, allOrder, refetch }) => {
     const order = {
       status: "Conform",
     };
-    fetch(`http://localhost:5000/order/${_id}`, {
+    fetch(`https://rocky-dusk-15979.herokuapp.com/order/${_id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
@@ -32,9 +32,9 @@ const AllOrderRow = ({ index, allOrder, refetch }) => {
   };
   const handleShipting = (id) => {
     const order = {
-      status: "Shipting",
+      status: "Shipped",
     };
-    fetch(`http://localhost:5000/order/${_id}`, {
+    fetch(`https://rocky-dusk-15979.herokuapp.com/order/${_id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
@@ -57,7 +57,22 @@ const AllOrderRow = ({ index, allOrder, refetch }) => {
       <td>{total_amount}</td>
       <td>{payment}</td>
       <td>
-        {status === "Not Paid" && <p className="text-green-600">Pending</p>}
+        {status === "Not Paid" && (
+          <>
+            <label
+              onClick={() => setDeletingOrder(allOrder)}
+              htmlFor="order-delete-confirm-modal"
+              className="btn btn-outline btn-error btn-xs border-0"
+            >
+              <FontAwesomeIcon
+                style={{ color: "red" }}
+                icon={faTrashCan}
+                className="fa-2x"
+              />
+            </label>
+            <p className="text-green-600">Pending</p>
+          </>
+        )}
         {status === "Pending" && (
           <button
             onClick={() => handleConform(_id)}
@@ -71,12 +86,10 @@ const AllOrderRow = ({ index, allOrder, refetch }) => {
             onClick={() => handleShipting(_id)}
             className="btn btn-sm btn-success"
           >
-            Shipting
+            Shippeing
           </button>
         )}
-        {status === "Shipting" && (
-          <p className="text-yellow-600">Shipting...</p>
-        )}
+        {status === "Shipped" && <p className="text-yellow-600">Shipped...</p>}
         {status === "Accept" && (
           <p className="text-blue-600 font-bold">
             <FontAwesomeIcon style={{ color: "blue" }} icon={faCircleCheck} />{" "}

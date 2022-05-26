@@ -14,14 +14,14 @@ const ProductRow = ({ product, index, setDeletingProduct, refetch }) => {
     <tr>
       <th>{index + 1}</th>
       <td>
-        <div class="flex items-center space-x-3">
-          <div class="avatar">
-            <div class="mask mask-squircle w-12 h-12">
+        <div  className="flex items-center space-x-3">
+          <div  className="avatar">
+            <div  className="mask mask-squircle w-12 h-12">
               <img src={img} alt="Avatar Tailwind CSS Component" />
             </div>
           </div>
           <div>
-            <div class="font-bold">{name}</div>
+            <div  className="font-bold">{name}</div>
           </div>
         </div>
       </td>
@@ -31,7 +31,7 @@ const ProductRow = ({ product, index, setDeletingProduct, refetch }) => {
       <td>{minOrder}</td>
       <th>
         <button
-          class="btn btn-ghost btn-xs"
+           className="btn btn-ghost btn-xs"
           onClick={() => navigateToPackageEdit(_id)}
         >
           <FontAwesomeIcon
@@ -42,7 +42,7 @@ const ProductRow = ({ product, index, setDeletingProduct, refetch }) => {
         </button>
         <label
           onClick={() => setDeletingProduct(product)}
-          for="product-delete-confirm-modal"
+            htmlFor="product-delete-confirm-modal"
           className="btn btn-outline btn-error btn-xs border-0"
         >
           <FontAwesomeIcon
@@ -51,7 +51,7 @@ const ProductRow = ({ product, index, setDeletingProduct, refetch }) => {
             className="fa-2x"
           />
         </label>
-        {/* <button class="btn btn-ghost btn-xs">
+        {/* <button  className="btn btn-ghost btn-xs">
           <FontAwesomeIcon
             style={{ color: "red" }}
             icon={faTrashCan}

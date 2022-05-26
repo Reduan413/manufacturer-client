@@ -4,24 +4,24 @@ import profileImg from "../../image/profileImg.jpg";
 const MyProfile = () => {
   return (
     <div>
-      <div class="hero  ">
-        <div class="hero-content flex-col lg:flex-row">
-          <img src={profileImg} class="max-w-sm rounded-lg shadow-2xl" />
+      <div  className="hero  ">
+        <div  className="hero-content flex-col lg:flex-row">
+          <img src={profileImg}  className="max-w-sm rounded-lg shadow-2xl" />
           <div>
-            <h1 class="text-5xl font-bold text-secondary">Hello, I am Reduan </h1>
-            <p class="py-3">
+            <h1  className="text-5xl font-bold text-secondary">Hello, I am Reduan </h1>
+            <p  className="py-3">
               I'm Reduan, web designer & developer , i enjoys building things
               that live on the internet. I have a strong passion over web
               technologies. I’m working on my developing skill to build
               exceptional websites and web apps.
             </p>
-            <p class="py-3">
+            <p  className="py-3">
               I Currently I’m doing BSc. in Computer Science & Engineering at
               Daffodil International University.I completed Diploma in
               Engineering ( Computer Technology ) from National Institute of
               Technology(NIT).
             </p>
-            <p class="py-3">
+            <p  className="py-3">
               My aim is to be a high skilled as a developer and I effectively
               push myself to accomplish my goals.I have Knowledge of HTML, CSS
               and different Frameworks, but I didn't have practical experience
@@ -43,29 +43,29 @@ const MyProfile = () => {
               <h2 className="text-xl font-bold text-secondary">Experties</h2>
 
               <p className="text-justify">
-                <ul class="steps steps-vertical text-start">
-                  <li data-content="★" class="step step-primary p-1">
+                <ul  className="steps steps-vertical text-start">
+                  <li data-content="★"  className="step step-primary p-1">
                     JavaScript
                   </li>
-                  <li data-content="★" class="step step-primary ">
+                  <li data-content="★"  className="step step-primary ">
                     ES6
                   </li>
-                  <li data-content="★" class="step step-primary ">
+                  <li data-content="★"  className="step step-primary ">
                     REST API
                   </li>
-                  <li data-content="★" class="step step-primary ">
+                  <li data-content="★"  className="step step-primary ">
                     React.Js
                   </li>
-                  <li data-content="★" class="step step-primary ">
+                  <li data-content="★"  className="step step-primary ">
                     HTML5
                   </li>
-                  <li data-content="★" class="step step-primary ">
+                  <li data-content="★"  className="step step-primary ">
                     CSS3, SASS
                   </li>
-                  <li data-content="★" class="step step-primary ">
+                  <li data-content="★"  className="step step-primary ">
                     Bootstrap-5
                   </li>
-                  <li data-content="★" class="step step-primary ">
+                  <li data-content="★"  className="step step-primary ">
                     Tailwind
                   </li>
                 </ul>
@@ -77,17 +77,17 @@ const MyProfile = () => {
               <h2 className="text-xl font-bold text-secondary">Comfortable</h2>
 
               <p className="text-justify">
-                <ul class="steps steps-vertical text-start">
-                  <li data-content="★" class="step step-primary ">
+                <ul  className="steps steps-vertical text-start">
+                  <li data-content="★"  className="step step-primary ">
                     Node.js
                   </li>
-                  <li data-content="★" class="step step-primary ">
+                  <li data-content="★"  className="step step-primary ">
                     Express.js
                   </li>
-                  <li data-content="★" class="step step-primary ">
+                  <li data-content="★"  className="step step-primary ">
                     Mongodb
                   </li>
-                  <li data-content="★" class="step step-primary ">
+                  <li data-content="★"  className="step step-primary ">
                     Firebase
                   </li>
                 </ul>
@@ -99,26 +99,26 @@ const MyProfile = () => {
               <h2 className="text-xl font-bold text-secondary">Tools</h2>
 
               <p className="text-justify">
-                <ul class="steps steps-vertical text-start">
-                  <li data-content="★" class="step step-primary ">
+                <ul  className="steps steps-vertical text-start">
+                  <li data-content="★"  className="step step-primary ">
                     Git
                   </li>
-                  <li data-content="★" class="step step-primary ">
+                  <li data-content="★"  className="step step-primary ">
                     Github
                   </li>
-                  <li data-content="★" class="step step-primary ">
+                  <li data-content="★"  className="step step-primary ">
                     VS Code
                   </li>
-                  <li data-content="★" class="step step-primary ">
+                  <li data-content="★"  className="step step-primary ">
                     Heroku
                   </li>
-                  <li data-content="★" class="step step-primary ">
+                  <li data-content="★"  className="step step-primary ">
                     Netlify
                   </li>
-                  <li data-content="★" class="step step-primary ">
+                  <li data-content="★"  className="step step-primary ">
                     Postman
                   </li>
-                  <li data-content="★" class="step step-primary ">
+                  <li data-content="★"  className="step step-primary ">
                     Figma
                   </li>
                 </ul>
@@ -132,17 +132,17 @@ const MyProfile = () => {
               </h2>
 
               <p className="text-justify">
-                <ul class="steps steps-vertical text-start">
-                  <li data-content="★" class="step step-primary ">
+                <ul  className="steps steps-vertical text-start">
+                  <li data-content="★"  className="step step-primary ">
                     Communication
                   </li>
-                  <li data-content="★" class="step step-primary ">
+                  <li data-content="★"  className="step step-primary ">
                     Leadership
                   </li>
-                  <li data-content="★" class="step step-primary ">
+                  <li data-content="★"  className="step step-primary ">
                     Organization
                   </li>
-                  <li data-content="★" class="step step-primary ">
+                  <li data-content="★"  className="step step-primary ">
                     Team Work
                   </li>
                 </ul>
@@ -166,14 +166,14 @@ const MyProfile = () => {
                 Firebase, React Router
               </p>
               <p className="text-justify">
-                <ul class="steps steps-vertical text-start">
-                  <li data-content="★" class="step step-primary ">
+                <ul  className="steps steps-vertical text-start">
+                  <li data-content="★"  className="step step-primary ">
                     User can Login using google authentication.
                   </li>
-                  <li data-content="★" class="step step-primary ">
+                  <li data-content="★"  className="step step-primary ">
                     Can see the detail of videos like youtube on the home page.
                   </li>
-                  <li data-content="★" class="step step-primary ">
+                  <li data-content="★"  className="step step-primary ">
                     This site fully responsive.
                   </li>
                 </ul>
@@ -223,15 +223,15 @@ const MyProfile = () => {
               </p>
 
               <p className="text-justify">
-                <ul class="steps steps-vertical text-start">
-                  <li data-content="★" class="step step-primary ">
+                <ul  className="steps steps-vertical text-start">
+                  <li data-content="★"  className="step step-primary ">
                     This project is Computer Inventory Management.
                   </li>
-                  <li data-content="★" class="step step-primary ">
+                  <li data-content="★"  className="step step-primary ">
                     Verification and Authentication Users can add and manage
                     items.
                   </li>
-                  <li data-content="★" class="step step-primary ">
+                  <li data-content="★"  className="step step-primary ">
                     Verification and Authentication Users can Restock and
                     Delivery items.
                   </li>

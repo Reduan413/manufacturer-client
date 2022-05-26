@@ -35,7 +35,7 @@ const ProfileUpdateModal = ({ activeUser, refetch, setUpdateProfile }) => {
             phone: data.phone,
             image: img,
           };
-          fetch(`http://localhost:5000/user/${_id}`, {
+          fetch(`https://rocky-dusk-15979.herokuapp.com/user/${_id}`, {
             method: "PATCH",
             headers: {
               "content-type": "application/json",
@@ -200,7 +200,7 @@ const ProfileUpdateModal = ({ activeUser, refetch, setUpdateProfile }) => {
               </label>
             </div>
             <input
-              className="btn w-full max-w-xs text-white"
+              className="btn w-full max-w-xs text-white bg-gradient-to-r from-secondary to-primary"
               type="submit"
               value="UPDATE PROFILE"
             />

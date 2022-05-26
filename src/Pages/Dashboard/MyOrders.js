@@ -1,15 +1,16 @@
 import { signOut } from "firebase/auth";
-import React from "react";
+import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
 import Loading from "../Shared/Loading";
 import MyOrderRow from "./MyOrderRow";
+import OrderDeleteModal from "./OrderDeleteModal";
 
 const MyOrders = () => {
   const [user] = useAuthState(auth);
-  //const [myOrders, setMyOrders] = useState([]);
+  const [deletingOrder, setDeletingOrder] = useState(null);
   const navigate = useNavigate();
   const {
     isLoading,
@@ -17,12 +18,15 @@ const MyOrders = () => {
     data: myOrders,
     refetch,
   } = useQuery(["available", user], () =>
-    fetch(`http://localhost:5000/order?customer=${user.email}`, {
-      method: "GET",
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    }).then((res) => {
+    fetch(
+      `https://rocky-dusk-15979.herokuapp.com/order?customer=${user.email}`,
+      {
+        method: "GET",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    ).then((res) => {
       if (res.status === 401 || res.status === 403) {
         signOut(auth);
         localStorage.removeItem("accessToken");
@@ -51,14 +55,25 @@ const MyOrders = () => {
             </tr>
           </thead>
           <tbody>
-           {
-               myOrders.map((myOrder, index) =>(
-                   <MyOrderRow key={myOrder._id} index={index} myOrder={myOrder} refetch={refetch}></MyOrderRow>
-               ))
-           }
+            {myOrders.map((myOrder, index) => (
+              <MyOrderRow
+                key={myOrder._id}
+                index={index}
+                myOrder={myOrder}
+                refetch={refetch}
+                setDeletingOrder={setDeletingOrder}
+              ></MyOrderRow>
+            ))}
           </tbody>
         </table>
       </div>
+      {deletingOrder && (
+        <OrderDeleteModal
+          deletingOrder={deletingOrder}
+          refetch={refetch}
+          setDeletingOrder={setDeletingOrder}
+        ></OrderDeleteModal>
+      )}
     </div>
   );
 };

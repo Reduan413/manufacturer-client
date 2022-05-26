@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 const UserRow = ({ user, index, refetch, setDeletingUser }) => {
   const { _id,email, userName, role } = user;
   const makeAdmin = () => {
-    fetch(`http://localhost:5000/user/admin/${email}`, {
+    fetch(`https://rocky-dusk-15979.herokuapp.com/user/admin/${email}`, {
       method: "PUT",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -42,7 +42,7 @@ const UserRow = ({ user, index, refetch, setDeletingUser }) => {
       <td>
         <label
           onClick={() => setDeletingUser(user)}
-          for="user-delete-confirm-modal"
+            htmlFor="user-delete-confirm-modal"
           className="btn btn-outline btn-error btn-xs border-0"
         >
           Remove user

@@ -19,7 +19,7 @@ const AddReview = () => {
           reviewBody: data.review,
           rating: data.rating,
         }
-        fetch('http://localhost:5000/review',{
+        fetch('https://rocky-dusk-15979.herokuapp.com/review',{
           method: 'POST',
           headers: {
             'content-type': 'application/json',
@@ -49,7 +49,7 @@ const AddReview = () => {
               <label className="label">
                 <span className="label-text">Your Opinion</span>
               </label>
-              <textarea class="textarea textarea-bordered" placeholder="write something "
+              <textarea  className="textarea textarea-bordered" placeholder="write something "
               {...register("review", {
                 required: {
                   value: true,
@@ -94,7 +94,7 @@ const AddReview = () => {
             
             
             <input
-              className="btn w-full max-w-xs text-white"
+              className="btn w-full max-w-xs text-white bg-gradient-to-r from-secondary to-primary"
               type="submit"
               value="ADD REVIEW"
             />

@@ -1,18 +1,33 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import Loading from "../Shared/Loading";
 import AvailableProduct from "./AvailableProduct";
+import './Purchase.css';
 import PurchaseModal from "./PurchaseModal";
 
 const AvailableProducts = () => {
   const [purchase, setPurchaser] = useState(null);
+  const [pageCount, setPageCount] = useState(5);
+  const [page, setPage] = useState(0);
+  const [size, setSize] = useState(9);
+  useEffect(() => {
+    fetch("https://rocky-dusk-15979.herokuapp.com/productCount")
+      .then((res) => res.json())
+      .then((data) => {
+        const count = data.count;
+        const pages = Math.ceil(count / 9);
+        //setPageCount(pages);
+      });
+  }, []);
   const {
     isLoading,
     error,
     data: products,
     refetch,
   } = useQuery("available", () =>
-    fetch(`http://localhost:5000/product`).then((res) => res.json())
+    fetch(`https://rocky-dusk-15979.herokuapp.com/product?page=${page}&size=${size}`).then(
+      (res) => res.json()
+    )
   );
   if (isLoading) {
     return <Loading></Loading>;
@@ -38,6 +53,16 @@ const AvailableProducts = () => {
           refetch={refetch}
         ></PurchaseModal>
       )}
+      <div className="pagination">
+        {[...Array(pageCount).keys()].map((number) => (
+          <button
+            className={page === number ? "selected" : ""}
+            onClick={() => setPage(number)}
+          >
+            {number + 1}
+          </button>
+        ))}
+      </div>
     </div>
   );
 };

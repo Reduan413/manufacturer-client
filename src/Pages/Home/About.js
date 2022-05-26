@@ -4,12 +4,12 @@ import ecommerce from "../../image/ecommerce.png";
 const About = () => {
   return (
     <div>
-      <div class="hero min-h-screen bg-base-200">
-        <div class="hero-content flex-col lg:flex-row">
-          <img src={ecommerce} class="max-w-sm rounded-lg shadow-2xl" />
+      <div  className="hero min-h-screen bg-base-200">
+        <div  className="hero-content flex-col lg:flex-row">
+          <img src={ecommerce}  className="max-w-sm rounded-lg shadow-2xl" />
           <div>
-            <h1 class="text-5xl font-bold">WHO WE ARE</h1>
-            <p class="py-6">
+            <h1  className="text-5xl font-bold">WHO WE ARE</h1>
+            <p  className="py-6">
               Technology has become a part of our daily lives and for a huge
               portion of our life, we are dependent on tech products daily.
               There is hardly a home in Bangladesh without a tech product. This
@@ -26,7 +26,7 @@ const About = () => {
               requirements to provide products and services for meeting all
               sorts of customer requirements.
             </p>
-            <p class="py-6">
+            <p  className="py-6">
               Best Laptop & Notebook Shop in Bangladesh. SA Tech is the largest
               and most reliable Laptop Brand Shop in BD. It does not matter
               whether you want a gaming laptop, an Intel-powered laptop, or an

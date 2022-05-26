@@ -9,7 +9,7 @@ const useAdmin = (user) => {
     const email = user?.email;
     if (email) {
       axios
-        .get(`http://localhost:5000/admin/${email}`, {
+        .get(`https://rocky-dusk-15979.herokuapp.com/admin/${email}`, {
           headers: {
             authorization: `Bearer ${localStorage.getItem("accessToken")}`,
           }

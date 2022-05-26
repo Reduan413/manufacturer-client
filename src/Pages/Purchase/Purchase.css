@@ -1,0 +1,19 @@
+.pagination {
+  width: 100%;
+  text-align: center;
+
+  display: block !important;
+  margin: auto !important;
+  margin-bottom: 15px !important;
+  padding: 20px;
+}
+.pagination button {
+  margin-right: 10px;
+  padding: 10px;
+  background-color: white;
+  border: 1px solid #5f9ea0;
+}
+.pagination .selected {
+  background-color: #5f9ea0;
+  border: 1px solid white;
+}

@@ -18,7 +18,7 @@ const Payment = () => {
     data: order,
     refetch,
   } = useQuery(["order", id], () =>
-    fetch(`http://localhost:5000/order/${id}`, {
+    fetch(`https://rocky-dusk-15979.herokuapp.com/order/${id}`, {
       method: "GET",
       headers: {
         "content-type": "application/json",
@@ -31,8 +31,8 @@ const Payment = () => {
   }
   return (
     <div className="mt-12">
-      <div class="flex w-full   grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-5">
-        <div class="grid  flex-grow card   rounded-box place-items-center">
+      <div  className="flex w-full   grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-5">
+        <div  className="grid  flex-grow card   rounded-box place-items-center">
           <div className="card lg:max-w-lg bg-base-100 shadow-xl">
             <div className="card-body text-center ">
               <p className="text-success font-bold">
@@ -60,7 +60,7 @@ const Payment = () => {
           </div>
         </div>
 
-        <div class="grid  flex-grow card   rounded-box place-items-center h-auto mt-12 mb-12" >
+        <div  className="grid  flex-grow card   rounded-box place-items-center h-auto mt-12 mb-12" >
           <div className="card bg-slate-200 shadow-xl"  >
             <div className="card-body text-center mt-12" style={{width:500, height:200}} >
               <Elements stripe={stripePromise}>

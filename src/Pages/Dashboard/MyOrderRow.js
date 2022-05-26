@@ -1,9 +1,9 @@
-import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
+import { faCircleCheck, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Link } from "react-router-dom";
 
-const MyOrderRow = ({ index, myOrder, refetch }) => {
+const MyOrderRow = ({ index, myOrder, refetch, setDeletingOrder }) => {
   const {
     _id,
     product,
@@ -18,7 +18,7 @@ const MyOrderRow = ({ index, myOrder, refetch }) => {
     const order = {
       status: "Accept",
     };
-    fetch(`http://localhost:5000/order/${_id}`, {
+    fetch(`https://rocky-dusk-15979.herokuapp.com/order/${_id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
@@ -41,9 +41,22 @@ const MyOrderRow = ({ index, myOrder, refetch }) => {
       <td>{status}</td>
       <td>
         {payment !== "Paid" && (
-          <Link to={`/dashboard/payment/${_id}`}>
-            <button className="btn btn-sm btn-success">Pay</button>
-          </Link>
+          <>
+            <label
+              onClick={() => setDeletingOrder(myOrder)}
+              htmlFor="order-delete-confirm-modal"
+              className="btn btn-outline btn-error btn-xs border-0"
+            >
+              <FontAwesomeIcon
+                style={{ color: "red" }}
+                icon={faTrashCan}
+                className="fa-2x"
+              />
+            </label>
+            <Link to={`/dashboard/payment/${_id}`}>
+              <button className="btn btn-sm btn-success">Pay</button>
+            </Link>
+          </>
         )}
         {status === "Paid" && (
           <div>
@@ -54,7 +67,7 @@ const MyOrderRow = ({ index, myOrder, refetch }) => {
             </p>
           </div>
         )}
-        {status === "Shipting" && (
+        {status === "Shipped" && (
           <div>
             <button
               onClick={() => handleAccept(_id)}

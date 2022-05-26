@@ -19,7 +19,7 @@ const EditProduct = () => {
     data: product,
     refetch,
   } = useQuery("available", () =>
-    fetch(`http://localhost:5000/product/${id}`).then((res) => res.json())
+    fetch(`https://rocky-dusk-15979.herokuapp.com/product/${id}`).then((res) => res.json())
   );
   if (isLoading) {
     return <Loading></Loading>;
@@ -36,7 +36,7 @@ const EditProduct = () => {
       price: data.price,
       minOrder: data.orderQuantity,
     };
-    fetch(`http://localhost:5000/product/${_id}`, {
+    fetch(`https://rocky-dusk-15979.herokuapp.com/product/${_id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
@@ -51,8 +51,8 @@ const EditProduct = () => {
       });
   };
   return (
-    <div class="flex w-full   grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-5">
-      <div class="grid  flex-grow card   rounded-box place-items-center">
+    <div  className="flex w-full   grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-5">
+      <div  className="grid  flex-grow card   rounded-box place-items-center">
         <div className="card lg:max-w-lg bg-base-100 shadow-xl">
           <div className="card-body text-center ">
             <img className="w-32 m-auto" src={img} alt="" />
@@ -71,7 +71,7 @@ const EditProduct = () => {
         </div>
       </div>
 
-      <div class="grid  flex-grow card   rounded-box place-items-center h-auto mt-12 mb-12">
+      <div  className="grid  flex-grow card   rounded-box place-items-center h-auto mt-12 mb-12">
         <div className="card lg:max-w-lg bg-base-100 shadow-xl">
           <div className="card-body text-center ">
             <form

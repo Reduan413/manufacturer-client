@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
-import About from "./Pages/About/About";
+import Blog from "./Pages/Blog/Blog";
 import AddProduct from "./Pages/Dashboard/AddProduct";
 import AddReview from "./Pages/Dashboard/AddReview";
 import Dashboard from "./Pages/Dashboard/Dashboard";
@@ -38,7 +38,7 @@ function App() {
             </RequireAuth>
           }
         ></Route>
-        <Route path="/about" element={<About />}></Route>
+        <Route path="/blog" element={<Blog />}></Route>
         <Route path="/myprofile" element={<MyProfile />}></Route>
         <Route
           path="/dashboard"

@@ -30,7 +30,7 @@ const PurchaseModal = ({ purchase, setPurchaser, refetch }) => {
           payment: "No Paid",
         };
         console.log(order);
-        fetch("http://localhost:5000/order", {
+        fetch("https://rocky-dusk-15979.herokuapp.com/order", {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -47,7 +47,7 @@ const PurchaseModal = ({ purchase, setPurchaser, refetch }) => {
               const product = {
                 stock: newStock,
               };
-              fetch(`http://localhost:5000/product/${_id}`, {
+              fetch(`https://rocky-dusk-15979.herokuapp.com/product/${_id}`, {
                 method: "PATCH",
                 headers: {
                   "content-type": "application/json",

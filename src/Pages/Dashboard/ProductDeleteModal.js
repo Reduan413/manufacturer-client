@@ -8,7 +8,7 @@ const ProductDeleteModal = ({
 }) => {
   const { _id, name } = deletingProduct;
   const handleDelete = (email) => {
-    fetch(`http://localhost:5000/product/${_id}`, {
+    fetch(`https://rocky-dusk-15979.herokuapp.com/product/${_id}`, {
       method: "DELETE",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -44,7 +44,7 @@ const ProductDeleteModal = ({
               Remove Product
             </button>
             <label
-              for="product-delete-confirm-modal"
+                htmlFor="product-delete-confirm-modal"
               className="btn btn-outline btn-sm"
             >
               Cancel

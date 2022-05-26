@@ -11,7 +11,7 @@ const useActiveUser = () => {
     isLoading,
     refetch,
   } = useQuery("user", () =>
-    fetch(`http://localhost:5000/user/${email}`, {
+    fetch(`https://rocky-dusk-15979.herokuapp.com/user/${email}`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

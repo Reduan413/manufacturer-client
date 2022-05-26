@@ -24,27 +24,27 @@ const LoginProfile = () => {
           ></ProfileUpdateModal>
         )}
       </div>
-      <div class="hero min-h-80 ">
-        <div class="hero-content flex-col lg:flex-row">
+      <div  className="hero min-h-80 ">
+        <div  className="hero-content flex-col lg:flex-row">
           <img
             src={activeUser?.image}
-            class="max-w-sm rounded-lg shadow-2xl"
+             className="max-w-sm rounded-lg shadow-2xl"
           />
           <div>
-            <h1 class="text-5xl font-bold">{activeUser?.userName}</h1>
-            <p class="pt-2">
+            <h1  className="text-5xl font-bold">{activeUser?.userName}</h1>
+            <p  className="pt-2">
               <span className="font-bold">Email:</span>
               <span> {activeUser?.email}</span>
             </p>
-            <p class="pt-2">
+            <p  className="pt-2">
               <span className="font-bold">Phone :</span>
               <span> {activeUser?.phone}</span>
             </p>
-            <p class="pt-2">
+            <p  className="pt-2">
               <span className="font-bold">Address:</span>
               <span> {activeUser?.address}</span>
             </p>
-            <p class="pt-2">
+            <p  className="pt-2">
               <span className="font-bold">Company:</span>
               <span> {activeUser?.company}</span>
             </p>
